@@ -7,6 +7,12 @@ namespace StudentGrades
     public class Student
     {
         private string name;
+        public string Name
+        {
+            get { return this.name; }
+            set { name = value; }
+        }
+
         private List<double> grades = new List<double>();
         public Student(string name)
         {
