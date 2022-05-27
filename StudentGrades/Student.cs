@@ -12,5 +12,9 @@ namespace StudentGrades
         {
             this.name = name;
         }
+        public void AddGrade(double grade)
+        {
+            this.grades.Add(grade);
+        }
     }
 }
