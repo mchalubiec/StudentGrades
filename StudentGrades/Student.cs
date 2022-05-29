@@ -6,17 +6,17 @@ namespace StudentGrades
 {
     public class Student
     {
-        private string name;
-        public string Name
-        {
-            get { return this.name; }
-            set { name = value; }
+        private string firstName;
+        public string FirstName
+        { 
+            get { return firstName; }
+            set { this.firstName = value; }
         }
 
         private List<double> grades = new List<double>();
-        public Student(string name)
+        public Student(string firstName)
         {
-            this.name = name;
+            this.firstName = firstName;
         }
         public void AddGrade(double grade)
         {

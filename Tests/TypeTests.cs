@@ -10,12 +10,23 @@ namespace Tests
         {
             var student1 = GetStudent("Jan");
             var student2 = GetStudent("Tomek");
-            Assert.Equal("Jan", student1.Name);
-            Assert.Equal("Tomek", student2.Name);
+            Assert.Equal("Jan", student1.FirstName);
+            Assert.Equal("Tomek", student2.FirstName);
         }
-        private Student GetStudent(string name)
+        [Fact]
+        public void CanSetNameFromReferance()
         {
-            return new Student(name);
+            var student = GetStudent("Michał");
+            this.SetName(student, "NewName");
+            Assert.Equal("NewName", student.FirstName);
+        }
+        private Student GetStudent(string firstName)
+        {
+            return new Student(firstName);
+        }
+        private void SetName(Student student, string firstName)
+        {
+            student.FirstName = firstName;
         }
     }
 }
