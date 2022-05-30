@@ -20,7 +20,38 @@ namespace StudentGrades
         }
         public void AddGrade(double grade)
         {
-            this.grades.Add(grade);
+            if (grade >= 0 && grade <= 100)
+            {
+                this.grades.Add(grade);
+            }
+            else
+            {
+                Console.WriteLine("Invalid value.");
+            }
+        }
+        public void AddGrade(char grade)
+        {
+            switch (grade)
+            {
+                case 'A':
+                    this.AddGrade(100);
+                    break;
+                case 'B':
+                    this.AddGrade(80);
+                    break;
+                case 'C':
+                    this.AddGrade(60);
+                    break;
+                case 'D':
+                    this.AddGrade(40);
+                    break;
+                case 'F':
+                    this.AddGrade(20);
+                    break;
+                default:
+                    this.AddGrade(0);
+                    break;
+            }
         }
         public Statistics GetStatistics()
         {
@@ -35,6 +66,24 @@ namespace StudentGrades
                 result.Average += grade;
             }
             result.Average /= grades.Count;
+            switch (result.Average)
+            {
+                case var d when d >= 90:
+                    result.Letter = 'A';
+                    break;
+                case var d when d >= 80:
+                    result.Letter = 'B';
+                    break;
+                case var d when d >= 70:
+                    result.Letter = 'C';
+                    break;
+                case var d when d >= 60:
+                    result.Letter = 'D';
+                    break;
+                default:
+                    result.Letter = 'H';
+                    break;
+            }
             return result;
         }
     }
