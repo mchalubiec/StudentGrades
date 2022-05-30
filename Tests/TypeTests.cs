@@ -5,6 +5,17 @@ namespace Tests
 {
     public class TypeTests
     {
+        public delegate string WriteMessage(string message);
+        int counter;
+        [Fact]
+        public void WriteMessageDelegateCanPointToMethod()
+        {
+            WriteMessage del = ReturnMessage;
+            del += ReturnMessage;
+            del += ReturnMessage2;
+            var result = del("hey!");
+            Assert.Equal(3, counter);
+        }
         [Fact]
         public void GetStudentReturnsDifferentObjects()
         {
@@ -27,6 +38,16 @@ namespace Tests
         private void SetName(Student student, string firstName)
         {
             student.FirstName = firstName;
+        }
+        private string ReturnMessage(string message)
+        {
+            counter++;
+            return message;
+        }
+        private string ReturnMessage2(string message)
+        {
+            counter++;
+            return message.ToUpper();
         }
     }
 }

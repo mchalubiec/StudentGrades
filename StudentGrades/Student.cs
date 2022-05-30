@@ -6,6 +6,8 @@ namespace StudentGrades
 {
     public class Student
     {
+        public delegate string GradeAddDelegate(object sender, EventArgs args);
+
         private string firstName;
         public string FirstName
         { 
@@ -26,7 +28,7 @@ namespace StudentGrades
             }
             else
             {
-                Console.WriteLine("Invalid value.");
+                throw new ArgumentException($"Invalid argument: {nameof(grade)}");
             }
         }
         public void AddGrade(char grade)
