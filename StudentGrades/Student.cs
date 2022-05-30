@@ -6,13 +6,19 @@ namespace StudentGrades
 {
     public class Student
     {
-        public delegate string GradeAddDelegate(object sender, EventArgs args);
-
+        public delegate void GradeAddedDelegate(object sender, EventArgs args);
+        public event GradeAddedDelegate GradeAdded;
         private string firstName;
         public string FirstName
         { 
             get { return firstName; }
-            set { this.firstName = value; }
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    this.firstName = value;
+                }                
+            }
         }
 
         private List<double> grades = new List<double>();
@@ -25,6 +31,10 @@ namespace StudentGrades
             if (grade >= 0 && grade <= 100)
             {
                 this.grades.Add(grade);
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else
             {

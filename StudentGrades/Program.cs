@@ -7,6 +7,7 @@ namespace StudentGrades
         static void Main(string[] args)
         {
             var student = new Student("Michał");
+            student.GradeAdded += OnGradeAdded;
             while (true)
             {
                 Console.WriteLine($"Hello! Enter grade for {student.FirstName}");
@@ -34,6 +35,10 @@ namespace StudentGrades
             Console.WriteLine($"Low: {statistics.Low}");
             Console.WriteLine($"Average: {statistics.Average}");
             Console.WriteLine($"Letter: {statistics.Letter}");
+        }
+        private static void OnGradeAdded(object sender, EventArgs args)
+        {
+            Console.WriteLine("New grade is added");
         }
     }
 }
