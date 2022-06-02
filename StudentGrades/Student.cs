@@ -11,7 +11,6 @@ namespace StudentGrades
         private List<double> grades = new List<double>();
         public Student(string firstName) : base(firstName)
         {
-            this.FirstName = firstName;
         }
         public override void AddGrade(double grade)
         {
@@ -52,7 +51,7 @@ namespace StudentGrades
                     break;
             }
         }
-        public Statistics GetStatistics()
+        public override Statistics GetStatistics()
         {
             var result = new Statistics();
             result.Average = 0.0;

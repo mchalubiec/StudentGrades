@@ -9,7 +9,7 @@ namespace StudentGrades
         private string firstName;
         public NameObject(string firstName)
         {
-            this.firstName = firstName;
+            this.FirstName = firstName;
         }
         public string FirstName
         {

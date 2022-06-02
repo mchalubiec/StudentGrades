@@ -7,7 +7,7 @@ namespace StudentGrades
 {
     public interface IStudent
     {
-        string firstName { get; set; }
+        string FirstName { get; set; }
         void AddGrade(double grade);
         Statistics GetStatistics();
         event GradeAddedDelegate GradeAdded;
