@@ -4,29 +4,16 @@ using System.Text;
 
 namespace StudentGrades
 {
-    public class Student
+    public class Student : StudentBase
     {
         public delegate void GradeAddedDelegate(object sender, EventArgs args);
         public event GradeAddedDelegate GradeAdded;
-        private string firstName;
-        public string FirstName
-        { 
-            get { return firstName; }
-            set
-            {
-                if (!string.IsNullOrWhiteSpace(value))
-                {
-                    this.firstName = value;
-                }                
-            }
-        }
-
         private List<double> grades = new List<double>();
-        public Student(string firstName)
+        public Student(string firstName) : base(firstName)
         {
-            this.firstName = firstName;
+            this.FirstName = firstName;
         }
-        public void AddGrade(double grade)
+        public override void AddGrade(double grade)
         {
             if (grade >= 0 && grade <= 100)
             {
