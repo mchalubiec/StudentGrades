@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using static StudentGrades.Student;
 
 namespace StudentGrades
 {
@@ -9,11 +10,8 @@ namespace StudentGrades
         public StudentBase(string firstName) : base(firstName)
         {
         }
-        public event Student.GradeAddedDelegate GradeAdded;
+        public abstract event GradeAddedDelegate GradeAdded;
         public abstract void AddGrade(double grade);
-        public virtual Statistics GetStatistics()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract Statistics GetStatistics();
     }
 }

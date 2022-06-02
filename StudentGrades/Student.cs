@@ -8,6 +8,7 @@ namespace StudentGrades
     {
         public delegate void GradeAddedDelegate(object sender, EventArgs args);
         public event GradeAddedDelegate GradeAdded;
+
         private List<double> grades = new List<double>();
         public Student(string firstName) : base(firstName)
         {
